@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\andrew\\Downloads\\BookListing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\andrew\\.android\\build-cache\\07dfd39c436951fc498954d5917b7afcfdd17b6b\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\andrew\\Downloads\\BookListing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\andrew\\.android\\build-cache\\07dfd39c436951fc498954d5917b7afcfdd17b6b\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\andrew\\Downloads\\BookListing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\andrew\\.android\\build-cache\\07dfd39c436951fc498954d5917b7afcfdd17b6b\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\andrew\\Downloads\\BookListing\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\andrew\\.android\\build-cache\\07dfd39c436951fc498954d5917b7afcfdd17b6b\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    }
+]
