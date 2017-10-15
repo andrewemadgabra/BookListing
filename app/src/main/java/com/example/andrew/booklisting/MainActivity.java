@@ -1,18 +1,12 @@
 package com.example.andrew.booklisting;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
-import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,28 +20,29 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import android.widget.EditText;
-
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<book> bookArrayList = new ArrayList<>();
-    private String Search="";
+    private String Search = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bookAsyncTask task = new  bookAsyncTask();
+        bookAsyncTask task = new bookAsyncTask();
         task.execute();
     }
 
-    public void edittext(View view){
+    public void edittext(View view) {
         EditText searchtext = (EditText) findViewById(R.id.Searchs);
         Search = searchtext.getText().toString();
     }
+
     public void submit(View view) {
         edittext(view);
-        bookAsyncTask task = new  bookAsyncTask();
+        bookAsyncTask task = new bookAsyncTask();
         task.execute();
     }
 
@@ -58,12 +53,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public class bookAsyncTask extends AsyncTask<URL, Void, ArrayList<book>> {
-
         private final String LOG_TAG = bookAsyncTask.class.getName();
 
         @Override
         public ArrayList<book> doInBackground(URL... urls) {
-            URL url = createUrl("https://www.googleapis.com/books/v1/volumes?q="+Search+"&maxResults=3");
+            URL url = createUrl("https://www.googleapis.com/books/v1/volumes?q=" + Search + "&maxResults=3");
             String jsonResponse = "";
             try {
                 jsonResponse = makeHttpRequest(url);
@@ -77,13 +71,12 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(ArrayList<book> books) {
             if (books == null) {
                 return;
-            }
-            else {
+            } else {
                 update();
             }
         }
 
-        public  ArrayList<book> Json(String jsonResponse) {
+        public ArrayList<book> Json(String jsonResponse) {
             try {
                 JSONObject JsonResponseurl = new JSONObject(jsonResponse);
                 JSONArray jasonArray = JsonResponseurl.getJSONArray("items");
@@ -91,25 +84,25 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject bookJsonObject = jasonArray.getJSONObject(i);
                     JSONObject firstobject = bookJsonObject.getJSONObject("volumeInfo");
                     JSONObject bookJsonArray = new JSONObject(jsonResponse);
-                        String title = "", language = "", author = "";
-                        try {
-                            title = firstobject.getString("title");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        try {
-                            language = firstobject.getString("language");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        try {
-                            author = firstobject.getString("authors");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        book booktest = new book(title, language, author);
-                        bookArrayList.add(booktest);
+                    String title = "", language = "", author = "";
+                    try {
+                        title = firstobject.getString("title");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
+                    try {
+                        language = firstobject.getString("language");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        author = firstobject.getString("authors");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    book booktest = new book(title, language, author);
+                    bookArrayList.add(booktest);
+                }
                 return bookArrayList;
             } catch (JSONException e) {
                 Log.e("Query Error", "Problem in the book JSON", e);
@@ -147,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
             return jsonResponse;
         }
 
-        public  URL createUrl(String stringUrl) {
+        public URL createUrl(String stringUrl) {
             URL url = null;
             try {
                 url = new URL(stringUrl);

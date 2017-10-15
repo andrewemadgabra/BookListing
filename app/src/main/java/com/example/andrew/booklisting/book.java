@@ -5,23 +5,23 @@ package com.example.andrew.booklisting;
  */
 
 public class book {
-    private String title,language,author;
+    private String title, language, author;
 
-    public book(String ctitle,String clanguage,String cauthor){
-        title=ctitle;
-        language=clanguage;
-        author=cauthor;
+    public book(String ctitle, String clanguage, String cauthor) {
+        title = ctitle;
+        language = clanguage;
+        author = cauthor;
     }
 
-    String getTitle(){
+    String getTitle() {
         return title;
     }
 
-    String getauthor(){
+    String getauthor() {
         return author;
     }
 
-    String getLanguage(){
+    String getLanguage() {
         return language;
     }
 
