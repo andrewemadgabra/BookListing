@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return bookArrayList;
             } catch (JSONException e) {
-                Log.e("Query Error", "Problem in the book JSON", e);
+                Log.e("Error", "Problem in the book JSON", e);
             }
             return null;
         }
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 url = new URL(stringUrl);
             } catch (MalformedURLException e) {
-                Log.e(LOG_TAG, "Error building the URL ", e);
+                Log.e(LOG_TAG, "Error in URL ", e);
             }
             return url;
         }
