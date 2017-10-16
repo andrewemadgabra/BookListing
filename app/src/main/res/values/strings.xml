@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Book Listing</string>
+    <string name="no_found_search">No Found Search</string>
+    <string name="search">Search</string>
 </resources>

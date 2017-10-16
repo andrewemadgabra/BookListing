@@ -6,34 +6,30 @@
     density="560dpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1508089357351"
+    timestamp="1508174688200"
     token="-4818886276827023133"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="1317" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="92" />
+        duration="0" />
     <task
         name="verifier"
-        duration="8" />
-
-    <artifact
-        location="C:\Users\andrew\Downloads\BookListing\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\andrew\Downloads\BookListing\app\build\outputs\apk\app-debug.apk"
-        type="SPLIT_MAIN" />
+        duration="0" />
 
     <build
         build-mode="FULL"
-        timestamp="1508089275543"
+        timestamp="1508170566588"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="C:\Users\andrew\Downloads\BookListing\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
         <artifact
             location="C:\Users\andrew\Downloads\BookListing\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
@@ -56,9 +52,6 @@
             location="C:\Users\andrew\Downloads\BookListing\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\andrew\Downloads\BookListing\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
             location="C:\Users\andrew\Downloads\BookListing\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
@@ -73,7 +66,15 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1508089357351"
+        timestamp="1508173171009"
+        verifier="R_CLASS_CHANGE" >
+        <artifact
+            location="C:\Users\andrew\Downloads\BookListing\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1508174635119"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\andrew\Downloads\BookListing\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
@@ -82,5 +83,9 @@
             location="C:\Users\andrew\Downloads\BookListing\app\build\outputs\apk\app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
+    <build
+        build-mode="COLD"
+        timestamp="1508174688200"
+        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>

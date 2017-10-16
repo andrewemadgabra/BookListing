@@ -1,5 +1,8 @@
 package com.example.andrew.booklisting;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,13 +30,29 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private ArrayList<book> bookArrayList = new ArrayList<>();
     private String Search = "";
+    private static final int READ_TIMEOUT = 10000;
+    private static final String KEY_TITLE = "title";
+    private static final String KEY_language = "language";
+    private static final String KEY_authors = "authors";
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bookAsyncTask task = new bookAsyncTask();
-        task.execute();
+        bindView();
+        boolean flag = connection();
+        if (flag) {
+            bookAsyncTask task = new bookAsyncTask();
+            task.execute();
+        } else {
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    void bindView() {
+        listView = (ListView) findViewById(R.id.listview);
+        listView.setEmptyView(findViewById(R.id.textView));
     }
 
     public void edittext(View view) {
@@ -40,15 +60,27 @@ public class MainActivity extends AppCompatActivity {
         Search = searchtext.getText().toString();
     }
 
+    public boolean connection() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+
     public void submit(View view) {
-        edittext(view);
-        bookAsyncTask task = new bookAsyncTask();
-        task.execute();
+        boolean flag = connection();
+        if (flag) {
+            edittext(view);
+            bookAsyncTask task = new bookAsyncTask();
+            task.execute();
+        } else {
+            Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void update() {
         bookAdapter BookAdapter = new bookAdapter(this, bookArrayList);
-        ListView listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(BookAdapter);
     }
 
@@ -83,22 +115,21 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < jasonArray.length(); i++) {
                     JSONObject bookJsonObject = jasonArray.getJSONObject(i);
                     JSONObject firstobject = bookJsonObject.getJSONObject("volumeInfo");
-                    JSONObject bookJsonArray = new JSONObject(jsonResponse);
                     String title = "", language = "", author = "";
-                    try {
-                        title = firstobject.getString("title");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    if (firstobject.has("title")) {
+                        title = firstobject.getString(KEY_TITLE);
+                    } else {
+                        title = "No found Title";
                     }
-                    try {
-                        language = firstobject.getString("language");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    if (firstobject.has("language")) {
+                        language = firstobject.getString(KEY_language);
+                    } else {
+                        language = "Not found language";
                     }
-                    try {
-                        author = firstobject.getString("authors");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    if (firstobject.has("authors")) {
+                        author = firstobject.getJSONArray(KEY_authors).get(0).toString();
+                    } else {
+                        author = "Not found author";
                     }
                     book booktest = new book(title, language, author);
                     bookArrayList.add(booktest);
@@ -120,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
-                urlConnection.setReadTimeout(10000 /* milliseconds */);
+                urlConnection.setReadTimeout(READ_TIMEOUT/* milliseconds */);
                 urlConnection.setConnectTimeout(15000 /* milliseconds */);
                 urlConnection.connect();
                 if (urlConnection.getResponseCode() == 200) {

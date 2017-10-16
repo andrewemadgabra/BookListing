@@ -1,7 +1,4 @@
-#Sun Oct 15 19:41:24 EET 2017
-base.0=C\:\\Users\\andrew\\Downloads\\BookListing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_c51a7373c0c624396cbe0b02a4fc49571b7ec6bb
-renamed.1=classes2.dex
+#Mon Oct 16 19:29:50 EET 2017
+base.0=C\:\\Users\\andrew\\Downloads\\BookListing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
-file.1=C\:\\Users\\andrew\\Downloads\\BookListing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_68604f4dfed1ea5515244d754dfe68ba6d5dcbf3\\classes.dex
-base.1=C\:\\Users\\andrew\\Downloads\\BookListing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_68604f4dfed1ea5515244d754dfe68ba6d5dcbf3
-file.0=C\:\\Users\\andrew\\Downloads\\BookListing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_c51a7373c0c624396cbe0b02a4fc49571b7ec6bb\\classes.dex
+file.0=C\:\\Users\\andrew\\Downloads\\BookListing\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
