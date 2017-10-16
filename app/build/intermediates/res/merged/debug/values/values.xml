@@ -440,7 +440,8 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="app_name">Book Listing</string>
-    <string name="no_found_search">No Found Search</string>
+    <string name="no_found_search">please Search</string>
+    <string name="not_found_book">No Found Book</string>
     <string name="search">Search</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>

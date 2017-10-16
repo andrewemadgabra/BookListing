@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -100,16 +101,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(ArrayList<book> books) {
+            TextView notfoundsearch =(TextView)findViewById(R.id.searchnotfound);
             if (books == null) {
-                return;
+                notfoundsearch.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.INVISIBLE);
             } else {
                 update();
+                notfoundsearch.setVisibility(View.INVISIBLE);
             }
         }
 
         public ArrayList<book> Json(String jsonResponse) {
             try {
                 JSONObject JsonResponseurl = new JSONObject(jsonResponse);
+                if(JsonResponseurl.has("items")){
                 JSONArray jasonArray = JsonResponseurl.getJSONArray("items");
                 for (int i = 0; i < jasonArray.length(); i++) {
                     JSONObject bookJsonObject = jasonArray.getJSONObject(i);
@@ -132,6 +137,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                     book booktest = new book(title, language, author);
                     bookArrayList.add(booktest);
+                }
+                }
+                else {
+                    return null;
                 }
                 return bookArrayList;
             } catch (JSONException e) {

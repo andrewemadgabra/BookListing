@@ -28,12 +28,16 @@
             android:onClick="submit"
             android:text="@string/search" />
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/searchnotfound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/not_found_book" />
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </ListView>
 
     <TextView
@@ -42,4 +46,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/no_found_search" />
+
+
 </LinearLayout>
