@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-
     public void submit(View view) {
         boolean flag = connection();
         if (flag) {
